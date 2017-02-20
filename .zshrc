@@ -1,5 +1,4 @@
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+export ZSH=$HOME/.zsh
 
 # Completions
 autoload -Uz compinit
@@ -41,9 +40,9 @@ $path
 )
 
 fpath=(
-$ZSH/zsh/completions/src
+$ZSH/completions/src
 $ZSH/functions
-$ZSH/zsh
+$ZSH
 $fpath
 )
 
@@ -97,7 +96,7 @@ if [ -f $ZSH/zsh/prompt/src/.bin/gitstatus ]; then
 else
   export GIT_PROMPT_EXECUTABLE="python"
 fi
-source $ZSH/zsh/prompt/prompt.zsh
+source $ZSH/prompt.zsh
 
 # Completion
 setopt COMPLETE_IN_WORD
@@ -135,8 +134,6 @@ if (( $+commands[grc] )) && (( $+commands[brew] ))
 then
   source `brew --prefix`/etc/grc.bashrc
 fi
-
-source $ZSH/zsh/window.zsh
 
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
