@@ -49,9 +49,7 @@ $fpath
 # Colors
 autoload colors; colors
 export LSCOLORS="exfxcxdxbxegedabagacad"
-export LS_COLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='3;33'
 
 if [[ "$OSTYPE" == darwin* ]]; then
