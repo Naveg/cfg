@@ -89,7 +89,7 @@ setopt HIST_REDUCE_BLANKS
 
 # Prompt
 setopt PROMPT_SUBST
-if [ -f $ZSH/zsh/prompt/src/.bin/gitstatus ]; then
+if [ -f $ZSH/prompt/src/.bin/gitstatus ]; then
   export GIT_PROMPT_EXECUTABLE="haskell"
 else
   export GIT_PROMPT_EXECUTABLE="python"
@@ -172,6 +172,10 @@ py() {
 if [ -d /usr/local/google-cloud-sdk ]; then
   source '/usr/local/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/google-cloud-sdk/completion.zsh.inc'
+fi
+if [ -d /opt/google-cloud-sdk ]; then
+  source '/opt/google-cloud-sdk/path.zsh.inc'
+  source '/opt/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # Ansible
