@@ -31,12 +31,13 @@ else
 fi
 
 path=(
-~/bin
-~/.local/bin
-$ZSH/bin
-$GOPATH/bin
-~/.cabal/bin
-$path
+  ~/bin
+  ~/.local/bin
+  $ZSH/bin
+  $GOPATH/bin
+  ~/.cabal/bin
+  $(ruby -e "print Gem.user_dir")/bin
+  $path
 )
 
 fpath=(
@@ -181,7 +182,9 @@ fi
 # Ansible
 export ANSIBLE_HOSTS="~/.ansible/hosts"
 
-export HBASE_CONF_DIR=/usr/local/var/hbase/conf
+if [ -d /usr/lib/jvm/default ]; then
+  export JAVA_HOME=/usr/lib/jvm/default
+fi
 export HADOOP_OPTS='-Djava.library.path=/usr/local/var/hadoop/lib/native/osx'
 
 function tsh() {
