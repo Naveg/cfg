@@ -3,6 +3,13 @@
 # see documentation at http://linux.die.net/man/1/zshexpn
 # A: finds the absolute path, even if this is symlinked
 # h: equivalent to dirname
+
+if [ -f $ZSH/prompt/src/.bin/gitstatus ]; then
+  export GIT_PROMPT_EXECUTABLE="haskell"
+else
+  export GIT_PROMPT_EXECUTABLE="python"
+fi
+
 export __GIT_PROMPT_DIR=${0:A:h}
 
 export GIT_PROMPT_EXECUTABLE=${GIT_PROMPT_EXECUTABLE:-"python"}

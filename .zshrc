@@ -1,221 +1,23 @@
-export ZSH=$HOME/.zsh
-
-# Completions
-autoload -Uz compinit
-if [[ "$OSTYPE" == darwin* ]]; then
-  if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-    compinit
-  else
-    compinit -C
-  fi
-else
-  if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-    compinit;
-  else
-    compinit -C;
-  fi
-fi
-
-path=()
-if [ -x /usr/libexec/path_helper ]; then
-  eval `/usr/libexec/path_helper -s`
-else
-  path=(
-  /usr/local/sbin
-  /usr/local/bin
-  /usr/sbin
-  /usr/bin
-  /sbin
-  /bin
-  )
-fi
-
-path=(
-  ~/bin
-  ~/.local/bin
-  $ZSH/bin
-  $GOPATH/bin
-  ~/.cabal/bin
-  $(ruby -e "print Gem.user_dir")/bin
-  $path
-)
-
-fpath=(
-$ZSH/completions/src
-$ZSH/functions
-$ZSH
-$fpath
-)
-
-# Colors
-autoload colors; colors
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
-export GREP_COLOR='3;33'
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-export EDITOR='vim'
-export HOMEBREW_EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
+source $ZSH/completions.zsh
+source $ZSH/colors.zsh
+source $ZSH/path.zsh
+source $ZSH/prompt.zsh
+source $ZSH/history.zsh
+source $ZSH/alias.zsh
+source $ZSH/keys.zsh
+source $ZSH/python.zsh
+source $ZSH/ssh.zsh
+source $ZSH/fasd.zsh
+source $ZSH/gcloud.zsh
 
 autoload -U $ZSH/functions/*(:t)
 
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
 unsetopt BG_NICE
 unsetopt HUP
-
-# Beeps
 unsetopt BEEP
-unsetopt LIST_BEEP
+unsetopt LISTBEEP
 unsetopt HIST_BEEP
 
-# History
-setopt HIST_VERIFY
-setopt APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
-
-# Prompt
-setopt PROMPT_SUBST
-if [ -f $ZSH/prompt/src/.bin/gitstatus ]; then
-  export GIT_PROMPT_EXECUTABLE="haskell"
-else
-  export GIT_PROMPT_EXECUTABLE="python"
-fi
-source $ZSH/prompt.zsh
-
-# Completion
-setopt COMPLETE_IN_WORD
-setopt LIST_AMBIGUOUS
-setopt IGNORE_EOF
-setopt AUTO_MENU
-unsetopt MENU_COMPLETE
-setopt ALWAYS_TO_END
-setopt COMPLETE_ALIASES
-
-# Pushd
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
-
-zle -N newtab
-
-bindkey -e
-bindkey "^K" kill-whole-line                      # ctrl-k
-bindkey "^R" history-incremental-search-backward  # ctrl-r
-bindkey "^A" beginning-of-line                    # ctrl-a
-bindkey "^E" end-of-line                          # ctrl-e
-bindkey "^[[H" beginning-of-line                  # home
-bindkey "^[[F" end-of-line                        # end
-bindkey "[B" history-search-forward               # down arrow
-bindkey "[A" history-search-backward              # up arrow
-bindkey "^D" delete-char                          # ctrl-d
-bindkey "^F" forward-char                         # ctrl-f
-bindkey "^B" backward-char                        # ctrl-b
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
-
-#GRC colorizes nifty unix tools all over the place
-if (( $+commands[grc] )) && (( $+commands[brew] ))
-then
-  source `brew --prefix`/etc/grc.bashrc
-fi
-
-zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-zstyle ':vcs_info:*' enable git
-
-# matches case insensitive for lowercase
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# pasting with tabs doesn't perform completion
-zstyle ':completion:*' insert-tab pending
-
-# Aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias la='ls -a'
-alias ll='ls -lh'
-alias lla='ls -lah'
-alias ducks='du -hcsx * | sort -nr'
-
-# Go
-export GOPATH=~/dev/go
-
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-pyenv() {
-  eval "$(command pyenv init -)"
-  pyenv "$@"
-}
-py() {
-  eval "$(pyenv virtualenv-init -)"
-}
-
-# Google cloud
-if [ -d /usr/local/google-cloud-sdk ]; then
-  source '/usr/local/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/google-cloud-sdk/completion.zsh.inc'
-fi
-if [ -d /opt/google-cloud-sdk ]; then
-  source '/opt/google-cloud-sdk/path.zsh.inc'
-  source '/opt/google-cloud-sdk/completion.zsh.inc'
-fi
-
-# Ansible
-export ANSIBLE_HOSTS="~/.ansible/hosts"
-
-if [ -d /usr/lib/jvm/default ]; then
-  export JAVA_HOME=/usr/lib/jvm/default
-fi
-export HADOOP_OPTS='-Djava.library.path=/usr/local/var/hadoop/lib/native/osx'
-
-function tsh() {
-  ssh $1 -t tmux -CC new-session -A -s default
-}
-function tm() {
-  tmux -CC new-session -A -s $1
-}
-compdef tsh=ssh
-
-export FZF_DEFAULT_OPTS="--color=light -e"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-if [ $commands[fasd] ]; then # check if fasd is installed
-  fasd_cache="$HOME/.fasd-init-cache"
-  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init auto >| "$fasd_cache"
-  fi
-  source "$fasd_cache"
-  unset fasd_cache
-
-  alias v="f -e $EDITOR"
-  alias sv="f -e sudo $EDITOR"
-  alias o='a -e open_command'
-fi
-
-# prevent stale ssh sockets
-if [ -S "$SSH_AUTH_SOCK" ] && [ ! -h "$SSH_AUTH_SOCK" ]; then
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-
-# alias for managing config files with git
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

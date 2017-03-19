@@ -1,0 +1,7 @@
+function tsh() {
+  ssh $1 -t tmux -CC new-session -A -s default
+}
+function tm() {
+  tmux -CC new-session -A -s $1
+}
+compdef tsh=ssh
