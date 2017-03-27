@@ -114,7 +114,12 @@ let mapleader = " "
 let maplocalleader = "\\"
 
 " System clipboard
-set clipboard=unnamed
+if has("clipboard")
+  set clipboard=unnamed
+  if has("unnamedplus")
+    set clipboard+=unnamedplus
+  endif
+endif
 
 " Keep the cursor in place while joining limes
 nnoremap J mzJ`z

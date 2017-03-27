@@ -1,5 +1,6 @@
 [options]
 font = Monaco for Powerline 10
+scrollback_lines = 100000
 
 [colors]
 foreground = #657b83

@@ -1,5 +1,7 @@
 zle -N newtab
 
+ZLE_REMOVE_SUFFIX_CHARS=""
+
 bindkey -e
 bindkey "^K" kill-whole-line                      # ctrl-k
 bindkey "^R" history-incremental-search-backward  # ctrl-r

@@ -19,6 +19,7 @@ $ZSH/bin
 $GOPATH/bin
 ~/.cabal/bin
 $(ruby -e "print Gem.user_dir")/bin
+/usr/bin/core_perl
 $path
 )
 

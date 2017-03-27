@@ -29,3 +29,4 @@ fi
 
 xset r rate 250 60
 exec i3
+exec libinput-gestures
