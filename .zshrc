@@ -1,3 +1,5 @@
+export ZSH=$HOME/.zsh
+
 source $ZSH/completions.zsh
 source $ZSH/colors.zsh
 source $ZSH/path.zsh
