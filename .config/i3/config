@@ -227,5 +227,4 @@ exec termite
 exec slack
 exec google-chrome-stable
 exec redshift
-exec libinput-gestures
 exec spotify
