@@ -1,7 +1,4 @@
 function tsh() {
   ssh $1 -t tmux new-session -A -s $2
 }
-function tm() {
-  tmux new-session -A -s $1
-}
 compdef tsh=ssh
