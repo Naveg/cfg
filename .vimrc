@@ -15,6 +15,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'Shougo/neocomplete.vim'
+Plug 'godlygeek/tabular'
 
 if version >= 800
   Plug 'w0rp/ale'

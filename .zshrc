@@ -23,3 +23,5 @@ unsetopt HIST_BEEP
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

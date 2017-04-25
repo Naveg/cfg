@@ -28,6 +28,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xset r rate 250 60
+xinput set-prop "Logitech M705" "Evdev Scrolling Distance" 4 1 1
 libinput-gestures &
 detect-monitor &
 exec i3
