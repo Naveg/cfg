@@ -15,6 +15,7 @@ fi
 path=(
 ~/bin
 ~/.local/bin
+~/.screenlayout
 $ZSH/bin
 $GOPATH/bin
 ~/.cabal/bin

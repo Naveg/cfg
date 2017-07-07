@@ -92,12 +92,13 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
 
-workspace $workspace1 output HDMI-1
-workspace $workspace2 output HDMI-1
-workspace $workspace3 output HDMI-1
+workspace $workspace1 output DP-1-8
+workspace $workspace2 output DP-1-8
+workspace $workspace3 output DP-1-8
 workspace $workspace4 output eDP-1
 workspace $workspace5 output eDP-1
 workspace $workspace6 output eDP-1
+workspace $workspace7 output DP-1-1
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -185,6 +186,7 @@ set $S_green   #859900
 bar {
   status_command i3blocks
   position top
+  tray_output primary
   colors {
     separator #586e75
     background #002b36
