@@ -24,4 +24,10 @@ setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 
+if [[ ! -f /usr/share/terminfo/x/xterm-termite ]]; then
+  if [[ -d /usr/share/terminfo ]]; then
+    sudo cp ~/.terminfo/x/xterm-termite /usr/share/terminfo/x/xterm-termite
+  fi
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
