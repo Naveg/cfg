@@ -150,6 +150,7 @@ au BufNewFile,BufRead *.go setlocal noexpandtab
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline#extensions#ale#enabled = 1
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
@@ -196,11 +197,16 @@ let g:ale_linters = {
   \'javascript': ['eslint'],
   \'python': ['pylint']
   \}
+let g:ale_fixers = {
+  \'javascript': ['eslint', 'prettier']
+  \}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "⚠"
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
 
 let g:jsx_ext_required = 0
 

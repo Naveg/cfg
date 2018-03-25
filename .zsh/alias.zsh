@@ -7,3 +7,4 @@ alias ll='ls -lh'
 alias lla='ls -lah'
 alias ducks='du -hcsx * | sort -nr'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias gam="/home/naveg/bin/gam/gam"

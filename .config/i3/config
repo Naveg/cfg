@@ -85,20 +85,20 @@ set $workspace1 "1: "
 set $workspace2 "2: "
 set $workspace3 "3: "
 set $workspace4 "4: "
-set $workspace5 "5: "
+set $workspace5 "5: "
 set $workspace6 "6: P"
 set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
-set $workspace10 "10"
+set $workspace10 "10: "
 
-workspace $workspace1 output DP-1-8
-workspace $workspace2 output DP-1-8
-workspace $workspace3 output DP-1-8
+workspace $workspace1 output DP-1
+workspace $workspace2 output DP-1
+workspace $workspace3 output DP-1
 workspace $workspace4 output eDP-1
 workspace $workspace5 output eDP-1
 workspace $workspace6 output eDP-1
-workspace $workspace7 output DP-1-1
+workspace $workspace7 output eDP-1
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -126,7 +126,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="jetbrains-idea-ce"] $workspace3
 assign [class="Slack"] $workspace4
-for_window [class="Spotify"] move to workspace $workspace5
+assign [class="Google Play Music Desktop Player"] $workspace5
+assign [class="Steam"] $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -227,6 +228,6 @@ bindsym Shift+Print exec "scrot /$HOME/screenshots/screenshot-$(date +%F_%T).png
 
 exec termite
 exec slack
+exec gpmdp
 exec google-chrome-stable
 exec redshift
-exec spotify
