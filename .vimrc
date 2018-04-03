@@ -14,8 +14,23 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/neocomplete.vim'
 Plug 'godlygeek/tabular'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'Shougo/neco-syntax'
+Plug 'zchee/deoplete-jedi'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 if version >= 800
   Plug 'w0rp/ale'
@@ -23,6 +38,9 @@ endif
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
+Plug 'leafgarland/typescript-vim'
+
+
 call plug#end()
 
 set nocompatible
@@ -152,52 +170,17 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#ale#enabled = 1
 
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:enable_auto_select = 1
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-
 " FZF
 map <Leader>o :FZF<CR>
 
 " Ale
 let g:ale_linters = {
+  \'typescript': ['tslint'],
   \'javascript': ['eslint'],
   \'python': ['pylint']
   \}
 let g:ale_fixers = {
+  \'typescript': ['tslint', 'prettier'],
   \'javascript': ['eslint', 'prettier']
   \}
 let g:ale_lint_on_save = 1
@@ -211,3 +194,18 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:jsx_ext_required = 0
 
 let python_highlight_all = 1
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+" Let <Tab> also do completion
+inoremap <silent><expr> <Tab>
+  \ pumvisible() ? "\<C-n>" :
+  \ deoplete#mappings#manual_complete()
+
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ }
+let g:LanguageClient_rootMarkers = {
+    \ 'typescript': ['package.json'],
+    \ }
