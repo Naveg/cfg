@@ -11,6 +11,7 @@ source $ZSH/python.zsh
 source $ZSH/ssh.zsh
 source $ZSH/fasd.zsh
 source $ZSH/gcloud.zsh
+source $ZSH/nvm.zsh
 
 autoload -U $ZSH/functions/*(:t)
 

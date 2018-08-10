@@ -11,5 +11,4 @@ if [ $commands[fasd] ]; then # check if fasd is installed
 
   alias v="f -e $EDITOR"
   alias sv="f -e sudo $EDITOR"
-  alias o='a -e open_command'
 fi

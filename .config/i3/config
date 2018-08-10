@@ -228,6 +228,5 @@ bindsym Shift+Print exec "scrot /$HOME/screenshots/screenshot-$(date +%F_%T).png
 
 exec termite
 exec slack
-exec gpmdp
 exec google-chrome-stable
 exec redshift

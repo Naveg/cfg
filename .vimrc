@@ -26,20 +26,13 @@ endif
 
 Plug 'Shougo/neco-syntax'
 Plug 'zchee/deoplete-jedi'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-if version >= 800
-  Plug 'w0rp/ale'
-endif
+Plug 'w0rp/ale'
 
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
-Plug 'leafgarland/typescript-vim'
-
+Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']}
+Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': ['typescript', 'typescript.tsx']}
 
 call plug#end()
 
@@ -197,15 +190,6 @@ let python_highlight_all = 1
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
-" Let <Tab> also do completion
-inoremap <silent><expr> <Tab>
-  \ pumvisible() ? "\<C-n>" :
-  \ deoplete#mappings#manual_complete()
 
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ }
-let g:LanguageClient_rootMarkers = {
-    \ 'typescript': ['package.json'],
-    \ }
+let g:python3_host_prog='/bin/python'
+let g:python_host_prog='/bin/python'
