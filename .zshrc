@@ -32,3 +32,4 @@ if [[ ! -f /usr/share/terminfo/x/xterm-termite ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.colors ] && source ~/.fzf.colors
