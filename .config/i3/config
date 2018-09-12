@@ -92,12 +92,12 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10: "
 
-workspace $workspace1 output DP-1
-workspace $workspace2 output DP-1
-workspace $workspace3 output DP-1
+workspace $workspace1 output DP-1 HDMI-1
+workspace $workspace2 output DP-1 HDMI-1
+workspace $workspace3 output DP-1 HDMI-1
 workspace $workspace4 output eDP-1
 workspace $workspace5 output eDP-1
-workspace $workspace6 output eDP-1
+workspace $workspace6 output HDMI-1 eDP-1
 workspace $workspace7 output eDP-1
 
 # switch to workspace
