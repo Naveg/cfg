@@ -5,8 +5,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-sensible'
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 
 Plug 'tpope/vim-surround'
@@ -32,7 +32,10 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']}
 Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': ['typescript', 'typescript.tsx']}
+
+if has('nvim')
+  Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': ['typescript', 'typescript.tsx']}
+endif
 
 call plug#end()
 
@@ -104,8 +107,6 @@ set wildmode=full
 
 " Appearance
 set t_Co=256
-set background=light
-colorscheme solarized
 syntax on
 
 " Tabs, spaces, wrapping
@@ -190,6 +191,8 @@ let python_highlight_all = 1
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:python3_host_prog='/bin/python'
 let g:python_host_prog='/bin/python'
