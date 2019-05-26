@@ -12,6 +12,7 @@ source $ZSH/ssh.zsh
 source $ZSH/fasd.zsh
 source $ZSH/gcloud.zsh
 source $ZSH/nvm.zsh
+source $ZSH/games.zsh
 
 autoload -U $ZSH/functions/*(:t)
 

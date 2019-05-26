@@ -16,6 +16,7 @@ path=(
 ~/bin
 ~/.local/bin
 ~/.screenlayout
+~/dev/jmc/target/products/org.openjdk.jmc/linux/gtk/x86_64
 $ZSH/bin
 $GOPATH/bin
 ~/.cabal/bin
