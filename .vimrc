@@ -25,6 +25,7 @@ else
 endif
 
 Plug 'Shougo/neco-syntax'
+Plug 'racer-rust/vim-racer'
 Plug 'zchee/deoplete-jedi'
 Plug 'w0rp/ale'
 
@@ -32,6 +33,7 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
 Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']}
 Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 if has('nvim')
   Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': ['typescript', 'typescript.tsx']}
@@ -55,7 +57,6 @@ set fileformats=unix,dos,mac
 set iskeyword+=_,$,@,%,#
 
 set list
-set showbreak=↪
 
 set splitbelow
 set splitright
@@ -196,3 +197,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:python3_host_prog='/bin/python'
 let g:python_host_prog='/bin/python'
+
+au BufNewFile,BufRead *.md setlocal wrap
+au BufNewFile,BufRead *.md setlocal textwidth=100
+
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1

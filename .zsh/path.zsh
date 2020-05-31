@@ -15,6 +15,7 @@ fi
 path=(
 ~/bin
 ~/.local/bin
+~/google-cloud-sdk/bin
 ~/.screenlayout
 ~/dev/jmc/target/products/org.openjdk.jmc/linux/gtk/x86_64
 $ZSH/bin
@@ -22,6 +23,8 @@ $GOPATH/bin
 ~/.cabal/bin
 $(ruby -e "print Gem.user_dir")/bin
 /usr/bin/core_perl
+$PYENV_ROOT/shims
+~/.cargo/bin
 $path
 )
 

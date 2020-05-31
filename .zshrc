@@ -2,17 +2,23 @@ export ZSH=$HOME/.zsh
 
 source $ZSH/completions.zsh
 source $ZSH/colors.zsh
-source $ZSH/path.zsh
 source $ZSH/prompt.zsh
 source $ZSH/history.zsh
 source $ZSH/alias.zsh
+
 source $ZSH/keys.zsh
-source $ZSH/python.zsh
 source $ZSH/ssh.zsh
+source $ZSH/games.zsh
+
+source $ZSH/python.zsh
+source $ZSH/go.zsh
+source $ZSH/nvm.zsh
+source $ZSH/r.zsh
+
 source $ZSH/fasd.zsh
 source $ZSH/gcloud.zsh
-source $ZSH/nvm.zsh
-source $ZSH/games.zsh
+
+source $ZSH/path.zsh
 
 autoload -U $ZSH/functions/*(:t)
 
@@ -34,3 +40,7 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzf.colors ] && source ~/.fzf.colors
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/naveg/.sdkman"
+[[ -s "/home/naveg/.sdkman/bin/sdkman-init.sh" ]] && source "/home/naveg/.sdkman/bin/sdkman-init.sh"

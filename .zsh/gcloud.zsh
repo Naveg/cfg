@@ -6,3 +6,7 @@ if [ -d /opt/google-cloud-sdk ]; then
   source '/opt/google-cloud-sdk/path.zsh.inc'
   source '/opt/google-cloud-sdk/completion.zsh.inc'
 fi
+if [ -d /home/naveg/google-cloud-sdk ]; then
+  source '/home/naveg/google-cloud-sdk/path.zsh.inc'
+  source '/home/naveg/google-cloud-sdk/completion.zsh.inc'
+fi

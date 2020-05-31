@@ -92,12 +92,12 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10: "
 
-workspace $workspace1 output DP-1 HDMI-1
-workspace $workspace2 output DP-1 HDMI-1
-workspace $workspace3 output DP-1 HDMI-1
+workspace $workspace1 output HDMI-1 DP-1
+workspace $workspace2 output HDMI-1 DP-1
+workspace $workspace3 output HDMI-1 DP-1
 workspace $workspace4 output eDP-1
 workspace $workspace5 output eDP-1
-workspace $workspace6 output DP-1 HDMI-1
+workspace $workspace6 output HDMI-1 DP-1
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -198,10 +198,10 @@ bar {
   }
 }
 
-client.focused #586e75 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #073642 #073642 #93a1a1 #002b36
-client.unfocused #002b36 #002b36 #586e75 #002b36
-client.urgent #dc322f #dc322f #fdf6e3 #dc322f
+#client.focused #586e75 #586e75 #fdf6e3 #268bd2
+#client.focused_inactive #073642 #073642 #93a1a1 #002b36
+#client.unfocused #002b36 #002b36 #586e75 #002b36
+#client.urgent #dc322f #dc322f #fdf6e3 #dc322f
 
 focus_follows_mouse no
 hide_edge_borders both
@@ -224,6 +224,9 @@ bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 # Screenshots
 bindsym Print --release exec "scrot -s $HOME/screenshots/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print exec "scrot /$HOME/screenshots/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+#for_window [instance="sun-awt-X11-XWindowPeer"] focus
+#for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 exec termite
 exec slack

@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */home/naveg/.fzf/bin* ]]; then
-  export PATH="$PATH:/home/naveg/.fzf/bin"
+  export PATH="${PATH:+${PATH}:}/home/naveg/.fzf/bin"
 fi
 
 # Auto-completion
@@ -11,4 +11,3 @@ fi
 # Key bindings
 # ------------
 source "/home/naveg/.fzf/shell/key-bindings.zsh"
-
