@@ -12,6 +12,13 @@ else
   )
 fi
 
+if [ $commands[ruby] ]; then
+  path=(
+    $(ruby -e "print Gem.user_dir")/bin
+    $path
+  )
+fi
+
 path=(
 ~/bin
 ~/.local/bin
@@ -21,7 +28,6 @@ path=(
 $ZSH/bin
 $GOPATH/bin
 ~/.cabal/bin
-$(ruby -e "print Gem.user_dir")/bin
 /usr/bin/core_perl
 $PYENV_ROOT/shims
 ~/.cargo/bin

@@ -5,5 +5,5 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 if [ $commands[keychain] ]; then
-  eval $(keychain --eval --quiet --nogui id_rsa id_rsa_alloy)
+  eval $(keychain --eval --quiet --nogui id_rsa id_rsa)
 fi

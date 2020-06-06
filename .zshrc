@@ -8,7 +8,7 @@ source $ZSH/alias.zsh
 
 source $ZSH/keys.zsh
 source $ZSH/ssh.zsh
-source $ZSH/games.zsh
+[ -f $ZSH/games.zsh ] && source $ZSH/games.zsh
 
 source $ZSH/python.zsh
 source $ZSH/go.zsh
